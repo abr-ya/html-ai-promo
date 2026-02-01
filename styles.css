@@ -1,0 +1,244 @@
+:root {
+  --accent: #6ee7ff;
+  --text-primary: #f4f6f8;
+  --text-secondary: #c9ced6;
+  --bg-start: #0b0b0b;
+  --bg-end: #121212;
+  --shift-x: 0px;
+  --shift-y: 0px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  background: radial-gradient(circle at top, var(--bg-end), var(--bg-start));
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 20px;
+  overflow: hidden;
+}
+
+.comets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.comet {
+  position: absolute;
+  top: var(--comet-top);
+  left: var(--comet-left);
+  width: var(--comet-size);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(110, 231, 255, 0),
+    rgba(110, 231, 255, 0.4),
+    rgba(110, 231, 255, 0.95)
+  );
+  border-radius: 999px;
+  opacity: 0;
+  transform: translate3d(-60px, -60px, 0) rotate(45deg);
+  animation: comet var(--comet-duration) ease-in-out infinite;
+  animation-delay: var(--comet-delay);
+}
+
+.comet::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: rgba(110, 231, 255, 0.9);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px rgba(110, 231, 255, 0.6);
+}
+
+.comet:nth-child(1) {
+  --comet-top: 12%;
+  --comet-left: 68%;
+  --comet-size: 120px;
+  --comet-duration: 12s;
+  --comet-delay: 1s;
+}
+
+.comet:nth-child(2) {
+  --comet-top: 38%;
+  --comet-left: 18%;
+  --comet-size: 160px;
+  --comet-duration: 15s;
+  --comet-delay: 4s;
+}
+
+.comet:nth-child(3) {
+  --comet-top: 65%;
+  --comet-left: 78%;
+  --comet-size: 140px;
+  --comet-duration: 14s;
+  --comet-delay: 7s;
+}
+
+.comet:nth-child(4) {
+  --comet-top: 78%;
+  --comet-left: 32%;
+  --comet-size: 110px;
+  --comet-duration: 16s;
+  --comet-delay: 9s;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.22;
+  filter: blur(6px);
+  animation: float 18s ease-in-out infinite;
+}
+
+.hero::before {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(110, 231, 255, 0.35), transparent 60%);
+  top: -120px;
+  left: -140px;
+}
+
+.hero::after {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 65%);
+  bottom: -160px;
+  right: -100px;
+  animation-duration: 24s;
+}
+
+.hero-content {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(18px) translate(var(--shift-x), var(--shift-y));
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+}
+
+body.is-loaded .hero-content {
+  opacity: 1;
+  transform: translateY(0) translate(var(--shift-x), var(--shift-y));
+}
+
+.hero-kicker {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  line-height: 1.1;
+}
+
+.hero-bio {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.hero-cta {
+  align-self: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  color: #0b0b0b;
+  background: var(--accent);
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(110, 231, 255, 0.18);
+}
+
+.hero-cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(40px, 30px, 0);
+  }
+}
+
+@keyframes comet {
+  0% {
+    opacity: 0;
+    transform: translate3d(-80px, -80px, 0) rotate(45deg);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  30% {
+    opacity: 0;
+    transform: translate3d(220px, 220px, 0) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(220px, 220px, 0) rotate(45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content {
+    transition: none;
+  }
+
+  .hero::before,
+  .hero::after,
+  .comet {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 32px 16px;
+  }
+
+  .hero-bio {
+    font-size: 1rem;
+  }
+}
