@@ -22,6 +22,28 @@ body {
   background: radial-gradient(circle at top, var(--bg-end), var(--bg-start));
 }
 
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(110, 231, 255, 0.35),
+    rgba(110, 231, 255, 0)
+  );
+  opacity: var(--glow-opacity, 0);
+  transform: translate3d(var(--glow-x, 0px), var(--glow-y, 0px), 0)
+    translate(-50%, -50%) scale(var(--glow-scale, 0.6));
+  filter: blur(8px);
+  mix-blend-mode: screen;
+  z-index: 0;
+  transition: opacity 200ms ease;
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
@@ -31,6 +53,7 @@ body {
   text-align: center;
   padding: 48px 20px;
   overflow: hidden;
+  z-index: 1;
 }
 
 .comets {
@@ -137,6 +160,17 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  padding: 32px;
+  border-radius: 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   opacity: 0;
   transform: translateY(18px) translate(var(--shift-x), var(--shift-y));
   transition: opacity 600ms ease, transform 600ms ease;
@@ -173,19 +207,26 @@ body.is-loaded .hero-content {
 
 .hero-cta {
   align-self: center;
-  border: 1px solid transparent;
+  border: 1px solid rgba(110, 231, 255, 0.6);
   border-radius: 999px;
   padding: 12px 28px;
   font-size: 1rem;
-  color: #0b0b0b;
-  background: var(--accent);
+  color: var(--text-primary);
+  background: linear-gradient(
+    135deg,
+    rgba(110, 231, 255, 0.35),
+    rgba(110, 231, 255, 0.1)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease, border 200ms ease;
 }
 
 .hero-cta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(110, 231, 255, 0.18);
+  border-color: rgba(110, 231, 255, 0.9);
+  box-shadow: 0 12px 28px rgba(110, 231, 255, 0.2);
 }
 
 .hero-cta:focus-visible {
@@ -195,6 +236,8 @@ body.is-loaded .hero-content {
 
 .skills {
   padding: 72px 20px 90px;
+  position: relative;
+  z-index: 1;
 }
 
 .skills-inner {
@@ -203,6 +246,17 @@ body.is-loaded .hero-content {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 28px;
+  border-radius: 26px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .skills h2 {
@@ -219,17 +273,29 @@ body.is-loaded .hero-content {
 .skill-card {
   border-radius: 18px;
   padding: 18px 18px 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(110, 231, 255, 0.25);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.06)
+  );
+  border: 1px solid rgba(110, 231, 255, 0.22);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   cursor: pointer;
-  transition: transform 200ms ease, box-shadow 200ms ease, border 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease, border 200ms ease,
+    background 200ms ease;
 }
 
 .skill-card:hover {
   transform: translateY(-2px);
   border-color: rgba(110, 231, 255, 0.55);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 22px 36px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0.08)
+  );
 }
 
 .skill-card:focus-visible {
@@ -260,19 +326,26 @@ body.is-loaded .hero-content {
 
 .skills-add {
   align-self: flex-start;
-  border: 1px solid transparent;
+  border: 1px solid rgba(110, 231, 255, 0.6);
   border-radius: 999px;
   padding: 10px 24px;
   font-size: 0.95rem;
-  color: #0b0b0b;
-  background: var(--accent);
+  color: var(--text-primary);
+  background: linear-gradient(
+    135deg,
+    rgba(110, 231, 255, 0.35),
+    rgba(110, 231, 255, 0.1)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease, border 200ms ease;
 }
 
 .skills-add:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(110, 231, 255, 0.18);
+  border-color: rgba(110, 231, 255, 0.9);
+  box-shadow: 0 12px 28px rgba(110, 231, 255, 0.2);
 }
 
 .skills-add:focus-visible {
@@ -325,11 +398,19 @@ body.is-loaded .hero-content {
     padding: 32px 16px;
   }
 
+  .hero-content {
+    padding: 24px;
+  }
+
   .hero-bio {
     font-size: 1rem;
   }
 
   .skills {
     padding: 56px 16px 72px;
+  }
+
+  .skills-inner {
+    padding: 22px;
   }
 }
