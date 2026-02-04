@@ -589,6 +589,7 @@ body.is-loaded .hero-content {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   padding: 12px 26px;
   border-radius: 999px;
   border: 1px solid rgba(110, 231, 255, 0.6);
@@ -602,6 +603,17 @@ body.is-loaded .hero-content {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: transform 200ms ease, box-shadow 200ms ease, border 200ms ease;
+}
+
+.contacts-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+}
+
+.contacts-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .contacts-link:hover {
