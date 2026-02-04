@@ -7,33 +7,104 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="hero">
-      <div class="comets" aria-hidden="true">
-        <span class="comet"></span>
-        <span class="comet"></span>
-        <span class="comet"></span>
-        <span class="comet"></span>
-      </div>
-      <div class="hero-content">
-        <p class="hero-kicker">Hello, world!</p>
-        <h1 class="hero-title">I'm Yaroslav</h1>
-        <p class="hero-bio">
-          A mid-level frontend developer who enjoys learning through practice
-          and building simple, useful solutions. Exploring AI tools to speed up
-          web development.
-        </p>
-        <button class="hero-cta" type="button">My Skills</button>
-      </div>
-    </main>
-    <section class="skills" id="skills">
-      <div class="skills-inner">
-        <h2>My Skills</h2>
-        <div id="skills-grid"></div>
-        <button class="skills-add" id="add-skill" type="button">
-          Add Skill
-        </button>
-      </div>
-    </section>
+    <div class="page">
+      <main class="hero screen" id="hero">
+        <div class="comets" aria-hidden="true">
+          <span class="comet"></span>
+          <span class="comet"></span>
+          <span class="comet"></span>
+          <span class="comet"></span>
+        </div>
+        <div class="hero-content">
+          <p class="hero-kicker">Hello, world!</p>
+          <h1 class="hero-title">I'm Yaroslav</h1>
+          <p class="hero-bio">
+            A mid-level frontend developer who enjoys learning through practice
+            and building simple, useful solutions. Exploring AI tools to speed
+            up web development.
+          </p>
+          <button class="hero-cta" type="button">My Skills</button>
+        </div>
+      </main>
+      <section class="skills screen" id="skills">
+        <div class="skills-inner">
+          <h2>My Skills</h2>
+          <div id="skills-grid"></div>
+          <button class="skills-add" id="add-skill" type="button">
+            Add Skill
+          </button>
+        </div>
+      </section>
+      <section class="skills-index screen" id="skills-index">
+        <div class="skills-index-inner">
+          <h2>My Skills Index</h2>
+          <div class="skills-index-grid">
+            <div class="skills-index-item">
+              <label for="skill-html">HTML</label>
+              <input id="skill-html" type="range" min="0" max="100" value="60" />
+              <output for="skill-html" class="skills-index-output">60%</output>
+            </div>
+            <div class="skills-index-item">
+              <label for="skill-css">CSS</label>
+              <input id="skill-css" type="range" min="0" max="100" value="60" />
+              <output for="skill-css" class="skills-index-output">60%</output>
+            </div>
+            <div class="skills-index-item">
+              <label for="skill-js">JS</label>
+              <input id="skill-js" type="range" min="0" max="100" value="60" />
+              <output for="skill-js" class="skills-index-output">60%</output>
+            </div>
+            <div class="skills-index-item">
+              <label for="skill-react">React/Vue</label>
+              <input
+                id="skill-react"
+                type="range"
+                min="0"
+                max="100"
+                value="55"
+              />
+              <output for="skill-react" class="skills-index-output">55%</output>
+            </div>
+            <div class="skills-index-item">
+              <label for="skill-llm">LLM/Neural Nets</label>
+              <input id="skill-llm" type="range" min="0" max="100" value="50" />
+              <output for="skill-llm" class="skills-index-output">50%</output>
+            </div>
+          </div>
+          <div class="skills-index-summary">
+            <div class="skills-gauge" aria-hidden="true">
+              <div class="skills-gauge-fill"></div>
+            </div>
+            <div class="skills-index-result">
+              <span class="skills-index-label">Overall Level</span>
+              <output id="skills-average" class="skills-index-average">0%</output>
+              <p id="skills-level-text" class="skills-index-text"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <nav class="pagination" aria-label="Section navigation">
+      <button
+        class="pagination-dot is-active"
+        type="button"
+        data-target="#hero"
+        aria-label="Hero section"
+        aria-current="true"
+      ></button>
+      <button
+        class="pagination-dot"
+        type="button"
+        data-target="#skills"
+        aria-label="My skills section"
+      ></button>
+      <button
+        class="pagination-dot"
+        type="button"
+        data-target="#skills-index"
+        aria-label="Skills index section"
+      ></button>
+    </nav>
     <script src="cursor-glow.js"></script>
     <script src="script.js"></script>
   </body>
