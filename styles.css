@@ -548,6 +548,73 @@ body.is-loaded .hero-content {
   color: var(--text-secondary);
 }
 
+.contacts {
+  padding: 0 20px 96px;
+  position: relative;
+  z-index: 1;
+}
+
+.contacts-inner {
+  width: 70vw;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px;
+  border-radius: 26px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.contacts-inner h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+}
+
+.contacts-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.contacts-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(110, 231, 255, 0.6);
+  color: var(--text-primary);
+  text-decoration: none;
+  background: linear-gradient(
+    135deg,
+    rgba(110, 231, 255, 0.35),
+    rgba(110, 231, 255, 0.1)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 200ms ease, box-shadow 200ms ease, border 200ms ease;
+}
+
+.contacts-link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(110, 231, 255, 0.9);
+  box-shadow: 0 12px 28px rgba(110, 231, 255, 0.2);
+}
+
+.contacts-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 @keyframes float {
   0%,
   100% {
@@ -623,5 +690,13 @@ body.is-loaded .hero-content {
     bottom: 24px;
     transform: translateX(50%);
     flex-direction: row;
+  }
+
+  .contacts {
+    padding: 0 16px 72px;
+  }
+
+  .contacts-inner {
+    padding: 22px;
   }
 }
